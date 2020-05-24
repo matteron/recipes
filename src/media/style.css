@@ -1,0 +1,38 @@
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+	width: 32rem;
+	margin: 2rem auto;
+	border: 1px solid black;
+}
+
+header {
+	border-bottom: 1px dashed black;
+}
+
+h1 {
+	text-align: center;
+	font-size: 3rem;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+}
+
+header > div {
+	padding-left: 1rem;
+	margin: 0;
+	position: absolute;
+}
+
+footer {
+	border-top: 1px dashed black;
+	text-align: center;
+}
+
+main {
+	padding: 1rem;
+}
