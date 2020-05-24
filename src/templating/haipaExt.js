@@ -72,8 +72,33 @@ Tag.prototype.steps = function(r) {
 	return this.titledList('Steps', r.body.steps, true);
 }
 
+Tag.prototype.tag = function(name) {
+	return this.a(h().class('tag').href(`/tags/${name}`).txt(name));
+}
+
+Tag.prototype.tagList = function(list) {
+	return this.ul(h().class('tags').forEach(list, (tag, n) => {
+		tag.li(h().tag(n));
+	}));
+}
+
+Tag.prototype.cookTime = function(time) {
+	return this.div(h()
+		.span(h().txt(`prep: ${time.prep}`))
+		.txt(' | ')
+		.span(h().txt(`cook: ${time.cook}`))
+	);
+}
+
+Tag.prototype.rInfo = function(meta) {
+	return this.div(h().class('info')
+		.tagList(meta.tags)
+		.cookTime(meta.time)
+	);
+}
+
 Tag.prototype.rBody = function(r) {
-	return this.ingredients(r).equipment(r).steps(r);
+	return this.rInfo(meta).ingredients(r).equipment(r).steps(r);
 }
 
 module.exports = Tag;
