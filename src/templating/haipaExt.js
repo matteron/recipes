@@ -77,13 +77,13 @@ Tag.prototype.tag = function(name) {
 }
 
 Tag.prototype.tagList = function(list) {
-	return this.ul(h().class('tags').forEach(list, (tag, n) => {
-		tag.li(h().tag(n));
+	return this.div(h().class('tags').forEach(list, (tag, n) => {
+		tag.tag(n)
 	}));
 }
 
 Tag.prototype.cookTime = function(time) {
-	return this.div(h()
+	return this.div(h().title('Prep and Cook Times').class('times')
 		.span(h().txt(`prep: ${time.prep}`))
 		.txt(' | ')
 		.span(h().txt(`cook: ${time.cook}`))
@@ -98,7 +98,7 @@ Tag.prototype.rInfo = function(meta) {
 }
 
 Tag.prototype.rBody = function(r) {
-	return this.rInfo(meta).ingredients(r).equipment(r).steps(r);
+	return this.rInfo(r.meta).ingredients(r).equipment(r).steps(r);
 }
 
 module.exports = Tag;

@@ -9,7 +9,9 @@ module.exports = {
 		},
 		serves: '800',
 		tags: [
-			tags.lunch
+			tags.lunch,
+			tags.breakfast,
+			tags.dinner
 		]
 	},
 	body: {
