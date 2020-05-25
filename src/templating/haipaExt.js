@@ -1,10 +1,15 @@
 const { h } = require('haipa');
 const { Tag } = require('haipa/lib/tag');
 
-Tag.prototype.rHeader = function(title, isHome) {
+Tag.prototype.rHeader = function(title, qr) {
 	const inner = h();
-	if (!isHome) {
-		inner.div(h().a(h().href('/').txt('back')))
+	if (qr) {
+		inner.div(h()
+			.div(h().class('qrback')
+				.a(h().class('back').href('/').txt('back'))
+				.qr(qr)
+			)
+		);
 	}
 	inner.h1(h().txt(title));
 	return this.header(inner);
@@ -95,6 +100,10 @@ Tag.prototype.rInfo = function(meta) {
 		.tagList(meta.tags)
 		.cookTime(meta.time)
 	);
+}
+
+Tag.prototype.qr = function(qr) {
+	return this.div(h().class('qr').txt(qr));
 }
 
 Tag.prototype.rBody = function(r) {

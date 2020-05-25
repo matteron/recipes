@@ -11,7 +11,7 @@ module.exports = class RecipeTemplate {
 			.stylesheet('/media/style.css')
 		)
 		.body(h()
-			.rHeader(d.title)
+			.rHeader(d.title, d.qr)
 			.main(h().rBody(d))
 			// .rFooter()
 		)

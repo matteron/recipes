@@ -15,7 +15,8 @@
   "dependencies": {
     "buildspace": "^0.1.2",
     "haipa": "^2.0.0",
-    "marked": "^0.8.2"
+    "marked": "^0.8.2",
+    "qrcode-svg": "^1.1.0"
   },
   "devDependencies": {
     "browser-sync": "^2.26.7",

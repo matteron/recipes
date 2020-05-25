@@ -6,13 +6,44 @@ html {
 }
 
 body {
+	font-family: monospace;
 	width: 32rem;
 	margin: 2rem auto;
 	border: 1px solid black;
+	border-radius: 1rem;
 }
 
 header {
 	border-bottom: 1px dashed black;
+}
+
+header > div{
+	/* margin: 0;
+	margin-top: 0.5rem;
+	width: 64px; */
+	position: absolute;
+	width: 32rem;
+}
+
+.qrback {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.back {
+	margin-left: 1rem;
+}
+
+@media print { 
+	.back { 
+	   visibility: hidden; 
+	} 
+ } 
+
+.qr {
+	align-self: center;
+	padding-right: 1rem;
 }
 
 h1 {
@@ -28,12 +59,6 @@ h3, h4 {
 
 h4, ul, ol {
 	margin-top: 0.25rem;
-}
-
-header > div {
-	padding-left: 1rem;
-	margin: 0;
-	position: absolute;
 }
 
 footer {
