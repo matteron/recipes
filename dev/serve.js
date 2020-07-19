@@ -1,48 +1,38 @@
-const buildspace = require('./buildspace');
-const browsersync = require('browser-sync');
+const bs = require('./buildspace');
+const { Davit } = require('davit');
 
-let Template = require('../src/templating/index');
+const src = bs.options.source;
+const out = bs.options.output;
 
-const src = buildspace.options.source;
-const out = buildspace.options.output;
+bs.enter();
 
-buildspace.enter();
+const dv = new Davit({
+	source: src,
+	root: out
+});
 
 const requireUncached = (module) => {
-    delete require.cache[require.resolve(module)];
-    return require(module);
-}
+	delete require.cache[require.resolve(module)];
+	return require(module);
+};
 
-browsersync.init({
-    server: {
-        baseDir: out,
-        serveStaticOptions: {
-            extensions: ['html']
-        }
-    }
+dv.watch('/media/style.css', () => {
+	bs.copyFile('/media/style.css');
 });
 
-browsersync.watch(src + '/**/*.css').on('change', (loc) => {
-	buildspace.copyFile('/media/style.css');
-    browsersync.reload(loc);
+dv.watch('/pages/recipes/*js', (_, f) => {
+	const name = f.split('.')[0];
+	const index = bs.pages.findIndex(p => p.path === 'recipes/' + name);
+	if (index > -1) {
+		const qr = bs.pages[index].data.qr;
+		const recipe = requireUncached('../' + src + '/pages/recipes/' + name);
+		bs.pages[index].data = Object.assign(recipe, { qr });
+		const compiled = bs.compilePage(bs.pages[index]);
+		bs.writeToFile(bs.pages[index].path, compiled);
+	}
 });
 
-// browsersync.watch(src + '/pages/**/*.md').on('change', (loc) => {
-// 	const name = loc.substr('src/pages/'.length).split('.')[0];
-//     const page = buildspace.pages.find(p => p.path === name);
-//     if (page) {
-// 		page.renderBody();
-//         buildspace.writeToFile(page.path, buildspace.compilePage(page))
-//     }
-//     browsersync.reload(loc);
-// });
-
-browsersync.watch(src + '/templating/template.js').on('change', (loc) => {
-	Template = requireUncached('../src/templating/template');
-    buildspace.pages.forEach(p => p.template = new Template());
-    buildspace.enter();
-	browsersync.reload(loc);
-});
+dv.start();
 
 process.on('SIGINT', function() {
     require('./clean');

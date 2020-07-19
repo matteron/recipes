@@ -13,13 +13,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "buildspace": "^0.1.2",
-    "haipa": "^2.0.0",
+    "buildspace": "^0.1.7",
+    "haipa": "^2.2.0",
     "marked": "^0.8.2",
     "qrcode-svg": "^1.1.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.7",
+    "davit": "^1.0.0",
     "rimraf": "^3.0.2"
   }
 }

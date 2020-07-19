@@ -7,7 +7,7 @@ module.exports = {
 			prep: 10,
 			cook: 50
 		},
-		serves: '800',
+		serves: '801',
 		tags: [
 			tags.lunch,
 			tags.breakfast,

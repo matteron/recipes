@@ -1,9 +1,9 @@
-const Buildspace = require('buildspace');
+const { BuildSpace } = require('buildspace');
 const Templates = require('../src/templates');
 const Pages = require('../src/pages');
 
-const bs = new Buildspace({
-	copy: ['media']
+const bs = new BuildSpace({
+	copy: ['media'],
 });
 bs.register(Pages.Index, Templates.Index);
 bs.setDefaultTemplate(Templates.Recipe);
