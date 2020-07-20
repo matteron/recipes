@@ -1,4 +1,5 @@
 const bs = require('./buildspace');
+const recipe = require('../src/pages/recipe');
 const { Davit } = require('davit');
 
 const src = bs.options.source;
@@ -20,13 +21,13 @@ dv.watch('/media/style.css', () => {
 	bs.copyFile('/media/style.css');
 });
 
-dv.watch('/pages/recipes/*js', (_, f) => {
+dv.watch('/pages/recipes/*rcp', (_, f, p) => {
 	const name = f.split('.')[0];
 	const index = bs.pages.findIndex(p => p.path === 'recipes/' + name);
 	if (index > -1) {
 		const qr = bs.pages[index].data.qr;
-		const recipe = requireUncached('../' + src + '/pages/recipes/' + name);
-		bs.pages[index].data = Object.assign(recipe, { qr });
+		const data = recipe(p);
+		bs.pages[index].data = Object.assign(data, { qr });
 		const compiled = bs.compilePage(bs.pages[index]);
 		bs.writeToFile(bs.pages[index].path, compiled);
 	}

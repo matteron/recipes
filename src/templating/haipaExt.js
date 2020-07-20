@@ -6,12 +6,13 @@ Tag.prototype.rHeader = function(title, qr) {
 	if (qr) {
 		inner.div(h()
 			.div(h().class('qrback')
-				.a(h().class('back').href('/').txt('back'))
+				.a(h('⇱ back').class('back').href('/'))
 				.qr(qr)
 			)
 		);
 	}
-	inner.h1(h().txt(title));
+	qr ? inner.h2(h(title)) : inner.h1(h(title));
+	// inner.h1(h(title));
 	return this.header(inner);
 }
 
@@ -66,15 +67,11 @@ Tag.prototype.titledList = function(title, list, numbered) {
 
 Tag.prototype.ingredients = function(r) {
 	return this
-		.titledList(`Ingredients (Serves ${r.meta.serves})`, r.body.ingredients);
-}
-
-Tag.prototype.equipment = function(r) {
-	return this.titledList('Equipment', r.body.equipment);
+		.titledList(`Ingredients`, r.ingredients);
 }
 
 Tag.prototype.steps = function(r) {
-	return this.titledList('Steps', r.body.steps, true);
+	return this.titledList('Steps', r.steps, true);
 }
 
 Tag.prototype.tag = function(name) {
@@ -87,27 +84,27 @@ Tag.prototype.tagList = function(list) {
 	}));
 }
 
-Tag.prototype.cookTime = function(time) {
+Tag.prototype.cookTime = function(prep, cook) {
 	return this.div(h().title('Prep and Cook Times').class('times')
-		.span(h().txt(`prep: ${time.prep}`))
+		.span(h(`prep: ${prep}`))
 		.txt(' | ')
-		.span(h().txt(`cook: ${time.cook}`))
+		.span(h(`cook: ${cook}`))
 	);
 }
 
-Tag.prototype.rInfo = function(meta) {
+Tag.prototype.rInfo = function(r) {
 	return this.div(h().class('info')
-		.tagList(meta.tags)
-		.cookTime(meta.time)
+		.tagList(r.tags)
+		.cookTime(r.prep, r.cook)
 	);
 }
 
 Tag.prototype.qr = function(qr) {
-	return this.div(h().class('qr').txt(qr));
+	return this.div(h(qr).class('qr'));
 }
 
 Tag.prototype.rBody = function(r) {
-	return this.rInfo(r.meta).ingredients(r).equipment(r).steps(r);
+	return this.rInfo(r).ingredients(r).steps(r);
 }
 
 module.exports = Tag;
