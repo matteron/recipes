@@ -11,7 +11,7 @@ module.exports = class IndexTemplate {
 			.stylesheet('/media/style.css')
 		)
 		.body(h()
-			.rHeader(d.title)
+			.rHeader(d.title, null, d.altTitle)
 			.main(h()
 				.recipeList(d.recipes)
 			)
