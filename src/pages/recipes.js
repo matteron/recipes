@@ -1,7 +1,9 @@
 const fs = require('fs');
 const recipe = require('./recipe');
 const QRCode = require('qrcode-svg');
-const url = 'https://localhost:3000/';
+const url = process.env.NODE_ENV === 'production'
+	? 'https://recipes.mattia.id'
+	: 'https://localhost:3000/';
 
 module.exports = fs.readdirSync('./src/pages/recipes')
 	.filter(r => r.split('.')[1] === 'rcp')
