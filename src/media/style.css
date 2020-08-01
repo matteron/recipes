@@ -1,5 +1,6 @@
 html {
 	box-sizing: border-box;
+	padding: 0 0.5rem;
 }
 *, *:before, *:after {
 	box-sizing: inherit;
@@ -7,7 +8,7 @@ html {
 
 body {
 	font-family: 'Helvetica Neue';
-	width: 32rem;
+	max-width: 32rem;
 	margin: 2rem auto;
 	border: 1px solid black;
 	border-radius: 1rem;
