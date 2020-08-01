@@ -1,5 +1,4 @@
 Spaghetti Chic
-Pasta con Pepperoni Rostitti e Olive
 Gatteau di Pattate
 Pizza di Semola
 Goat Cheese Balls

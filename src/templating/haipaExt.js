@@ -1,7 +1,7 @@
 const { h } = require('haipa');
-const { Tag } = require('haipa/lib/tag');
+const { HaipaNode } = require('haipa/lib/main/node');
 
-Tag.prototype.rHeader = function(title, qr) {
+HaipaNode.prototype.rHeader = function(title, qr) {
 	const inner = h();
 	if (qr) {
 		inner.div(h()
@@ -16,7 +16,7 @@ Tag.prototype.rHeader = function(title, qr) {
 	return this.header(inner);
 }
 
-Tag.prototype.rFooter = function() {
+HaipaNode.prototype.rFooter = function() {
 	return this.footer(h()
 		.span(h().txt('Made by '))
 		.span(h()
@@ -29,7 +29,7 @@ Tag.prototype.rFooter = function() {
 	);
 }
 
-Tag.prototype.recipeList = function(list) {
+HaipaNode.prototype.recipeList = function(list) {
 	return this.ul(h()
 		.forEach(list, (tag, n) => {
 			tag.li(h()
@@ -39,14 +39,14 @@ Tag.prototype.recipeList = function(list) {
 	);
 }
 
-Tag.prototype.simpleList = function(list, numbered) {
+HaipaNode.prototype.simpleList = function(list, numbered) {
 	const inner = h().forEach(list, (tag, n) => {
 		tag.li(h().txt(n))
 	});
 	return this[(numbered ? 'ol' : 'ul')](inner);
 }
 
-Tag.prototype.branchList = function(data, numbered) {
+HaipaNode.prototype.branchList = function(data, numbered) {
 	if (typeof data[0] === 'string') {
 		return this.simpleList(data, numbered);
 	} else {
@@ -59,32 +59,32 @@ Tag.prototype.branchList = function(data, numbered) {
 	}
 }
 
-Tag.prototype.titledList = function(title, list, numbered) {
+HaipaNode.prototype.titledList = function(title, list, numbered) {
 	return this.h3(h()
 		.txt(title)
 	).branchList(list, numbered);
 }
 
-Tag.prototype.ingredients = function(r) {
+HaipaNode.prototype.ingredients = function(r) {
 	return this
-		.titledList(`Ingredients`, r.ingredients);
+		.titledList(`Ingredients (Serves: ${r.serves})`, r.ingredients);
 }
 
-Tag.prototype.steps = function(r) {
+HaipaNode.prototype.steps = function(r) {
 	return this.titledList('Steps', r.steps, true);
 }
 
-Tag.prototype.tag = function(name) {
+HaipaNode.prototype.tag = function(name) {
 	return this.a(h().class('tag').href(`/tags/${name}`).txt(name));
 }
 
-Tag.prototype.tagList = function(list) {
+HaipaNode.prototype.tagList = function(list) {
 	return this.div(h().class('tags').forEach(list, (tag, n) => {
 		tag.tag(n)
 	}));
 }
 
-Tag.prototype.cookTime = function(prep, cook) {
+HaipaNode.prototype.cookTime = function(prep, cook) {
 	return this.div(h().title('Prep and Cook Times').class('times')
 		.span(h(`prep: ${prep}`))
 		.txt(' | ')
@@ -92,19 +92,19 @@ Tag.prototype.cookTime = function(prep, cook) {
 	);
 }
 
-Tag.prototype.rInfo = function(r) {
+HaipaNode.prototype.rInfo = function(r) {
 	return this.div(h().class('info')
 		.tagList(r.tags)
 		.cookTime(r.prep, r.cook)
 	);
 }
 
-Tag.prototype.qr = function(qr) {
+HaipaNode.prototype.qr = function(qr) {
 	return this.div(h(qr).class('qr'));
 }
 
-Tag.prototype.rBody = function(r) {
+HaipaNode.prototype.rBody = function(r) {
 	return this.rInfo(r).ingredients(r).steps(r);
 }
 
-module.exports = Tag;
+module.exports = HaipaNode;

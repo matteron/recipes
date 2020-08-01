@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const parseArray = (raw) => raw.split('-')
+const parseArray = (raw) => raw.split('+')
 	.filter(p => p.trim())
 	.reduce((acc, cur) => {
 		acc.push(cur.trim());
@@ -13,7 +13,7 @@ module.exports = (path) => {
 	return raw.split('@').filter(p => p).reduce((acc, cur) => {
 		const prop = cur.split(':');
 		const key = prop[0];
-		const value = prop[1].includes('-')
+		const value = prop[1].includes('+')
 			? parseArray(prop[1])
 			: prop[1].trim();
 		acc[key] = value;

@@ -1,6 +1,6 @@
 const bs = require('./buildspace');
 const recipe = require('../src/pages/recipe');
-const { Davit } = require('davit');
+const { Davit } = require('../../davit/lib/index');
 
 const src = bs.options.source;
 const out = bs.options.output;
@@ -21,7 +21,7 @@ dv.watch('/media/style.css', () => {
 	bs.copyFile('/media/style.css');
 });
 
-dv.watch('/pages/recipes/*rcp', (_, f, p) => {
+dv.watch('/pages/recipes/*rcp', (f, p) => {
 	const name = f.split('.')[0];
 	const index = bs.pages.findIndex(p => p.path === 'recipes/' + name);
 	if (index > -1) {

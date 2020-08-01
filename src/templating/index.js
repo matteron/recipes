@@ -2,7 +2,7 @@ const { h } = require('haipa');
 require('./haipaExt');
 
 module.exports = class IndexTemplate {
-	build = (d) => h().html(h()
+	build = (d) => h().doctype().html(h()
 		.lang('en')
 		.head(h()
 			.title(h().txt(d.title))

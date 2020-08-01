@@ -14,12 +14,12 @@
   "license": "ISC",
   "dependencies": {
     "buildspace": "^0.1.7",
-    "haipa": "^2.2.0",
+    "haipa": "^3.0.1",
     "marked": "^0.8.2",
     "qrcode-svg": "^1.1.0"
   },
   "devDependencies": {
-    "davit": "^1.0.0",
+    "davit": "^1.0.2",
     "rimraf": "^3.0.2"
   }
 }

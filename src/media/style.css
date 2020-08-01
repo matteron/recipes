@@ -77,6 +77,14 @@ main {
 	padding: 1rem;
 }
 
+ul > li {
+	margin-bottom: 0.25rem;
+}
+
+ol > li {
+	margin-bottom: 0.5rem;
+}
+
 .info {
 	display: flex;
 	justify-content: space-between;
