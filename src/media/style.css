@@ -6,7 +6,7 @@ html {
 }
 
 body {
-	font-family: monospace;
+	font-family: 'Helvetica Neue';
 	width: 32rem;
 	margin: 2rem auto;
 	border: 1px solid black;
@@ -44,6 +44,11 @@ header > div{
 .qr {
 	align-self: center;
 	padding-right: 1rem;
+}
+
+h1, h2, h3 {
+	font-family: Canela;
+	font-weight: 500;
 }
 
 h1 {

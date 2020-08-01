@@ -1,7 +1,7 @@
 module.exports = class IndexPage {
 	path = 'index';
 	data = {
-		title: 'Recipes',
+		title: 'Antonella Coccinella',
 		recipes: require('./recipes')
 	}
 }
