@@ -132,4 +132,13 @@ HaipaNode.prototype.ladybug = function() {
 	);
 }
 
+HaipaNode.prototype.favicon = function() {
+	return this.link(h()
+		.rel('icon')
+		// .rel('mask-icon')
+		.href('/favicon.svg')
+		.type('image/svg+xml')
+	);
+}
+
 module.exports = HaipaNode;

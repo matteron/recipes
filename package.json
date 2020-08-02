@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "buildspace": "^0.1.7",
+    "buildspace": "^0.1.8",
     "haipa": "^3.0.1",
     "marked": "^0.8.2",
     "qrcode-svg": "^1.1.0"

@@ -5,7 +5,7 @@ const ladybugTitle = h()
 	.span(h('C').ladybug().txt('ccinella'));
 
 module.exports = class IndexPage {
-	path = 'index';
+	path = 'index.html';
 	data = {
 		title: ladybugTitle.render(),
 		altTitle: 'Antonella Coccinella',

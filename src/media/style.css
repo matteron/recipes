@@ -19,11 +19,18 @@ header {
 }
 
 header > div{
-	/* margin: 0;
-	margin-top: 0.5rem;
-	width: 64px; */
 	position: absolute;
 	width: 32rem;
+}
+
+header > h1 {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+header > h1 > span {
+	padding: 0 0.5rem;
 }
 
 .qrback {
@@ -120,7 +127,6 @@ ol > li {
 }
 
 .ladybug {
-	/* width: 1rem; */
-	height: 1.1ex;
-	padding: 1px;
+	height: 1.2ex;
+	padding: 1.1px;
 }

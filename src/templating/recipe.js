@@ -9,6 +9,7 @@ module.exports = class RecipeTemplate {
 			.viewport()
 			.encoding()
 			.stylesheet('/media/style.css')
+			.favicon()
 		)
 		.body(h()
 			.rHeader(d.title, d.qr)

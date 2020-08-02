@@ -6,6 +6,7 @@ const bs = new BuildSpace({
 	copy: ['media'],
 });
 bs.register(Pages.Index, Templates.Index);
+bs.register(Pages.Favicon, Templates.Favicon);
 bs.setDefaultTemplate(Templates.Recipe);
 bs.bulkRegister(Pages.Recipes);
 

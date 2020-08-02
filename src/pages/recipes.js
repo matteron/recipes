@@ -8,7 +8,7 @@ const url = process.env.NODE_ENV === 'production'
 module.exports = fs.readdirSync('./src/pages/recipes')
 	.filter(r => r.split('.')[1] === 'rcp')
 	.reduce((acc, cur) => {
-		const path = 'recipes/' + cur.split('.')[0];
+		const path = 'recipes/' + cur.split('.')[0] + '.html';
 		const data = recipe(__dirname + '/recipes/' + cur);
 		const qrContent = url + path;
 		const qr = new QRCode({
